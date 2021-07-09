@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# borrowed/stolen from:
+#   https://andrewlock.net/deploying-asp-net-core-applications-to-kubernetes-part-10-creating-an-exec-host-deployment-for-running-one-off-commands/
+
+die_func() {
+  echo "Terminating"
+  exit 1
+}
+
+trap die_func TERM
+
+days=1
+seconds=`expr $days \* 24 \* 60 \* 60`
+echo "Staying alive for $days day(s)..."
+sleep $seconds &
+wait
