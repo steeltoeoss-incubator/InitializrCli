@@ -18,6 +18,4 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: initializr-cli
-        image: localhost:5000/initializr-cli
-        ports:
-        - containerPort: 80
+        image: steeltoe.azurecr.io/initializr-cli
