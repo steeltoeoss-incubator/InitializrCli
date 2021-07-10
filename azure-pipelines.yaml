@@ -1,5 +1,5 @@
 trigger:
-  - main
+  - staging
 
 variables:
   - name: major
@@ -12,12 +12,30 @@ variables:
 name: $(major).$(minor).$(patch)-$(Rev:r)
 
 stages:
-  - stage: noop
-    displayName: NoOp
+  - stage: deploy
+    displayName: Deploy
+    dependsOn: assemble
+    condition:
+      not(eq(variables['build.reason'], 'PullRequest'))
     jobs:
-      - job: dummy
-        displayName: Dummy
+      - job: deployToStaging
+        displayName: Deploy to Staging
         pool:
           vmImage: ubuntu-latest
         steps:
-          - script: echo "Nothing to do"
+          - task: Docker@2
+            displayName: Push Docker Image
+            inputs:
+              command: buildAndPush
+              containerRegistry: SteeltoeContainerRegistry
+              repository: initializr-cli
+              tags: |
+                $(Build.BuildId)
+                latest
+          - task: KubernetesManifest@0
+            displayName: Deploy to Staging Cluster
+            inputs:
+              action: deploy
+              kubernetesServiceConnection: SteeltoeStagingAKS
+              manifests: deploy/kubernetes/manifest.yaml
+              containers: steeltoe.azurecr.io/initializr-cli:$(Build.BuildId)
