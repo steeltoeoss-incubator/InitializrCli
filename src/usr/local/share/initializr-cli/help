@@ -2,10 +2,10 @@ Initializr API
 
     User Commands
 
-        show help
+        view help
             http http://initializr-api/api
 
-        show UI configuration
+        view UI configuration
             http http://initializr-api/api/uiconfig
 
         generate project
@@ -16,7 +16,7 @@ Initializr API
         refresh configuration
             http http://initializr-api/actuator/refresh
 
-        show environment
+        view environment
             http http://initializr-api/actuator/env
 
         view logger configuration
@@ -24,4 +24,12 @@ Initializr API
 
         edit logger configuration
             http POST http://initializr-api/actuator/loggers/Steeltoe.InitializrApi configuredLevel=<DEBUG,INFO,etc>
+
+
+Initializr Config Server
+
+    User Commands
+
+        view configuration
+            http http://initializr-config-server/SteeltoeInitializr/default
 
