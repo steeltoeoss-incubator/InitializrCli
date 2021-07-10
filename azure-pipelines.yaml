@@ -38,3 +38,4 @@ stages:
               kubernetesServiceConnection: SteeltoeStagingAKS
               manifests: deploy/kubernetes/manifest.yaml
               containers: steeltoe.azurecr.io/initializr-cli:$(Build.BuildId)
+              namespace: initializr
