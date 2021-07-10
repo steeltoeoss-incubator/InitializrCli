@@ -1,27 +1,55 @@
+Initializr Config Server
+
+    User Commands
+
+        view configuration
+            http http://initializr-config-server/SteeltoeInitializr/default
+
+
 Initializr API
 
     User Commands
 
-        show help
-            http http://initializr-api/api
-
-        show UI configuration
-            http http://initializr-api/api/uiconfig
-
         generate project
             http http://initializr-api/api/project [options]
+
+        view help
+            http http://initializr-api/api
+
+        view UI configuration
+            http http://initializr-api/api/uiconfig
 
     Management Commands
 
         refresh configuration
             http http://initializr-api/actuator/refresh
 
-        show environment
+        view environment
             http http://initializr-api/actuator/env
 
         view logger configuration
             http http://initializr-api/actuator/loggers
 
         edit logger configuration
-            http POST http://initializr-api/actuator/loggers/Steeltoe.InitializrApi configuredLevel=<DEBUG,INFO,etc>
+            http POST http://initializr-api/actuator/loggers/<logger> configuredLevel=<level>
+
+
+Net Core Tool Service
+
+    User Commands
+
+        generate project
+            http http://net-core-tool-service/api/new/<template> [options]
+
+        view templates
+            http http://net-core-tool-service/api/new
+
+        view template help
+            http http://net-core-tool-service/api/new/<template>/help
+
+        add template
+            http PUT http://net-core-tool-service/api/new/nuget/<nugetid>
+
+        delete template
+            http DELETE http://net-core-tool-service/api/new/nuget/<nugetid>
 
