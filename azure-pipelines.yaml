@@ -1,0 +1,23 @@
+trigger:
+  - main
+
+variables:
+  - name: major
+    value: 0
+  - name: minor
+    value: 0
+  - name: patch
+    value: 1
+
+name: $(major).$(minor).$(patch)-$(Rev:r)
+
+stages:
+  - stage: noop
+    displayName: NoOp
+    jobs:
+      - job: dummy
+        displayName: Dummy
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - script: echo "Nothing to do"
