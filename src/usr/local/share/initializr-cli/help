@@ -1,3 +1,11 @@
+Initializr Config Server
+
+    User Commands
+
+        view configuration
+            http http://initializr-config-server/SteeltoeInitializr/default
+
+
 Initializr API
 
     User Commands
@@ -24,12 +32,3 @@ Initializr API
 
         edit logger configuration
             http POST http://initializr-api/actuator/loggers/Steeltoe.InitializrApi configuredLevel=<DEBUG,INFO,etc>
-
-
-Initializr Config Server
-
-    User Commands
-
-        view configuration
-            http http://initializr-config-server/SteeltoeInitializr/default
-
