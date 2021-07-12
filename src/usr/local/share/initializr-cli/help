@@ -1,9 +1,13 @@
+
 Initializr Config Server
 
     User Commands
 
         view configuration
-            http http://initializr-config-server/SteeltoeInitializr/default
+            http http://initializr-config-server/SteeltoeInitializr/default/main
+
+        view default Steeltoe version
+            http http://initializr-config-server/SteeltoeInitializr/default/main | jq '.| .propertySources[] | .source | ."steeltoeVersion.default"'
 
 
 Initializr API
@@ -30,8 +34,8 @@ Initializr API
         view logger configuration
             http http://initializr-api/actuator/loggers
 
-        edit logger configuration
-            http POST http://initializr-api/actuator/loggers/<logger> configuredLevel=<level>
+        enable debug logging
+            http POST http://initializr-api/actuator/loggers/Steeltoe.InitializrApi configuredLevel=DEBUG
 
 
 Net Core Tool Service
