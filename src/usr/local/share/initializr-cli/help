@@ -6,6 +6,9 @@ Initializr Config Server
         view configuration
             http http://initializr-config-server/SteeltoeInitializr/default/main
 
+        view configuration in the staging branch
+            http http://initializr-config-server/SteeltoeInitializr/default/staging
+
         view default Steeltoe version
             http http://initializr-config-server/SteeltoeInitializr/default/main | jq '.| .propertySources[] | .source | ."steeltoeVersion.default"'
 
@@ -56,4 +59,12 @@ Net Core Tool Service
 
         delete template
             http DELETE http://net-core-tool-service/api/new/nuget/<nugetid>
+
+    Management Commands
+
+        view logger configuration
+            http http://initializr-api/actuator/loggers
+
+        enable debug logging for command executor
+            http POST http://net-core-tool-service/actuator/loggers/Steeltoe.Common.Utils.Diagnostics.CommandExecutor configuredLevel=DEBUG
 
