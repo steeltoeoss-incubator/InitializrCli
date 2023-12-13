@@ -1,4 +1,4 @@
-# Initializr CLI
+# Initializr CLI is no longer maintained
 
 ## Attach to CLI
 
